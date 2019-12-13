@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Board</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	</head>
+	<body>
+	<form action ="/board/update/process" method="post">
+		<div class="board-page">
+			<div class="board">
+				<h1>수정</h1>
+				<div align="right">작성자: <%= row.user_id %></div>
+				<div align="right">최초작성일: <%= row.cdate %></div>
+				<div class="board-form">
+						<div align="left" id="original_board_title"> 원제목: <%=row.title%></div>
+						<input id="new_board_title" placeholder="새 제목을 입력해주세요 입력 안하시면 원래 제목이 유지됩니다."/>
+						<div id="bid" type="hidden"  value=<%=row.bid%>/>
+						<textarea id="new_board_content" rows="10"><%=row.content%>
+						</textarea>
+				</div>
+				<div align="right">
+				
+				<% if( login_id != row.user_id) { %>
+					<!-- 버튼아예없지롱 -->
+				<% } else { %>
+					<button id="btn_board_update" type="submit" >수정</button>
+				<%}%>
+					<button id="btn_board_delete">삭제</button>
+					<button id="btn_board_list">목록</button>
+				</div>
+			</div>
+		</div>
+	</form>
+	
+        
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="/javascripts/board.js"></script>
+	</body>
+</html>
